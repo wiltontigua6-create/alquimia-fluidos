@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de Alquimia de Física de Fluidos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">⚗️ Laboratorio de Alquimia</h1>
+            <p class="subtitle">Física de Fluidos Neuro-Estética</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Canvas de Fluidos -->
+            <div class="canvas-wrapper">
+                <canvas id="fluidCanvas"></canvas>
+                <div class="info-overlay">
+                    <p>Mueve el ratón para crear ondas • Arrastra elementos para reacciones</p>
+                </div>
+            </div>
+
+            <!-- Panel Lateral de Elementos -->
+            <aside class="sidebar">
+                <h2>ELEMENTOS ALQUÍMICOS</h2>
+                
+                <div class="elements-container">
+                    <!-- Hidrógeno -->
+                    <div class="element-card" draggable="true" data-element="hydrogen">
+                        <div class="element-icon hydrogen-icon">H</div>
+                        <h3>Hidrógeno</h3>
+                        <p class="element-desc">Ligero • Inflamable</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 0.08</span>
+                        </div>
+                    </div>
+
+                    <!-- Oxígeno -->
+                    <div class="element-card" draggable="true" data-element="oxygen">
+                        <div class="element-icon oxygen-icon">O</div>
+                        <h3>Oxígeno</h3>
+                        <p class="element-desc">Reactivo • Vital</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 1.43</span>
+                        </div>
+                    </div>
+
+                    <!-- Mercurio -->
+                    <div class="element-card" draggable="true" data-element="mercury">
+                        <div class="element-icon mercury-icon">Hg</div>
+                        <h3>Mercurio</h3>
+                        <p class="element-desc">Denso • Tóxico</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 13.6</span>
+                        </div>
+                    </div>
+
+                    <!-- Aceite -->
+                    <div class="element-card" draggable="true" data-element="oil">
+                        <div class="element-icon oil-icon">🔥</div>
+                        <h3>Aceite</h3>
+                        <p class="element-desc">Viscoso • Repelente</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 0.92</span>
+                        </div>
+                    </div>
+
+                    <!-- Agua Neón -->
+                    <div class="element-card" draggable="true" data-element="water">
+                        <div class="element-icon water-icon">💧</div>
+                        <h3>Agua Neón</h3>
+                        <p class="element-desc">Base • Luminosa</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 1.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Plasma -->
+                    <div class="element-card" draggable="true" data-element="plasma">
+                        <div class="element-icon plasma-icon">⚡</div>
+                        <h3>Plasma</h3>
+                        <p class="element-desc">Energético • Inestable</p>
+                        <div class="element-info">
+                            <span class="density">Densidad: 0.01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="controls-section">
+                    <h3>CONTROLES</h3>
+                    <button id="clearBtn" class="control-btn clear-btn">🔄 Limpiar</button>
+                    <button id="pauseBtn" class="control-btn pause-btn">⏸ Pausar</button>
+                    
+                    <div class="slider-group">
+                        <label>Viscosidad</label>
+                        <input type="range" id="viscositySlider" min="0.1" max="2" step="0.1" value="1">
+                        <span id="viscosityValue">1.0</span>
+                    </div>
+
+                    <div class="slider-group">
+                        <label>Velocidad</label>
+                        <input type="range" id="speedSlider" min="0.1" max="2" step="0.1" value="1">
+                        <span id="speedValue">1.0</span>
+                    </div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="stats-section">
+                    <h3>ESTADÍSTICAS</h3>
+                    <div class="stat-item">
+                        <span>Elementos:</span>
+                        <span id="particleCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Energía:</span>
+                        <span id="energy">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Temperatura:</span>
+                        <span id="temperature">20°C</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
