@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">🌤️ Weather Dashboard</h1>
+            <p class="subtitle">Real-time Weather Information</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search city... (e.g., London, New York)"
+                        autocomplete="off"
+                    >
+                    <button id="searchBtn" class="search-btn">🔍 Search</button>
+                    <button id="geoBtn" class="geo-btn" title="Use current location">📍</button>
+                </div>
+                <div id="suggestionsDropdown" class="suggestions-dropdown"></div>
+            </div>
+
+            <!-- Current Weather Card -->
+            <div id="currentWeatherCard" class="current-weather-card hidden">
+                <div class="weather-header">
+                    <div class="location-info">
+                        <h2 id="cityName" class="city-name"></h2>
+                        <p id="dateTime" class="date-time"></p>
+                    </div>
+                    <div class="weather-icon-large">
+                        <img id="weatherIconLarge" src="" alt="Weather icon">
+                    </div>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature-section">
+                        <span id="temperature" class="temperature"></span>
+                        <span id="weatherDesc" class="weather-description"></span>
+                    </div>
+                </div>
+
+                <div class="weather-details-grid">
+                    <div class="detail-card">
+                        <span class="detail-label">Feels Like</span>
+                        <span id="feelsLike" class="detail-value">--°C</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-label">Humidity</span>
+                        <span id="humidity" class="detail-value">--%</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-label">Pressure</span>
+                        <span id="pressure" class="detail-value">-- mb</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-label">Wind Speed</span>
+                        <span id="windSpeed" class="detail-value">-- km/h</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-label">UV Index</span>
+                        <span id="uvIndex" class="detail-value">--</span>
+                    </div>
+                    <div class="detail-card">
+                        <span class="detail-label">Visibility</span>
+                        <span id="visibility" class="detail-value">-- km</span>
+                    </div>
+                </div>
+
+                <div class="weather-extra">
+                    <div class="extra-item">
+                        <span class="extra-label">Sunrise</span>
+                        <span id="sunrise" class="extra-value">--:--</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-label">Sunset</span>
+                        <span id="sunset" class="extra-value">--:--</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-label">Wind Direction</span>
+                        <span id="windDir" class="extra-value">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Section -->
+            <section id="forecastSection" class="forecast-section hidden">
+                <h3 class="section-title">5-Day Forecast</h3>
+                <div id="forecastContainer" class="forecast-container"></div>
+            </section>
+
+            <!-- Hourly Forecast -->
+            <section id="hourlySection" class="hourly-section hidden">
+                <h3 class="section-title">24-Hour Forecast</h3>
+                <div id="hourlyContainer" class="hourly-container"></div>
+            </section>
+
+            <!-- Air Quality Section -->
+            <section id="airQualitySection" class="air-quality-section hidden">
+                <h3 class="section-title">Air Quality</h3>
+                <div class="air-quality-content">
+                    <div class="aqi-display">
+                        <div id="aqiValue" class="aqi-value">--</div>
+                        <div id="aqiLabel" class="aqi-label">--</div>
+                    </div>
+                    <div class="pollutants-grid">
+                        <div class="pollutant-card">
+                            <span class="pollutant-label">PM2.5</span>
+                            <span id="pm25" class="pollutant-value">-- µg/m³</span>
+                        </div>
+                        <div class="pollutant-card">
+                            <span class="pollutant-label">PM10</span>
+                            <span id="pm10" class="pollutant-value">-- µg/m³</span>
+                        </div>
+                        <div class="pollutant-card">
+                            <span class="pollutant-label">NO₂</span>
+                            <span id="no2" class="pollutant-value">-- µg/m³</span>
+                        </div>
+                        <div class="pollutant-card">
+                            <span class="pollutant-label">O₃</span>
+                            <span id="o3" class="pollutant-value">-- µg/m³</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden"></div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+        </div>
+
+        <!-- Sidebar - Recent Searches -->
+        <aside class="sidebar">
+            <h3>Recent Searches</h3>
+            <div id="recentSearchesList" class="recent-searches-list"></div>
+            <button id="clearHistoryBtn" class="clear-btn">Clear History</button>
+        </aside>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
